@@ -1,0 +1,38 @@
+on:
+  push:
+    branches:
+      - main
+
+name: Deploy streamlit demo to Google App Engine
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    # Add "id-token" with the intended permissions.
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+      # - name: Checkout
+      - uses: actions/checkout@v3
+      - uses: golang-enthusiast/app-yaml-env-compiler@v1.0
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          # MY_ENV_VAR2: ${{ secrets.MY_ENV_VAR2 }}
+        
+      # - name: deploy
+      - uses: actions-hub/gcloud@master
+        env:
+          PROJECT_ID: '${{ secrets.PROJECT_ID }}'
+          APPLICATION_CREDENTIALS: '${{ secrets.GCP_CREDENTIALS }}'
+          CLOUDSDK_APP_CLOUD_BUILD_TIMEOUT: 1800
+        with:
+          args: app deploy app.yaml
+
+
+
+      # - name: Deploy to App Engine
+      #   run: gcloud app deploy app.yaml

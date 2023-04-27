@@ -1,0 +1,9 @@
+/downloads
+/results
+.DS_Store
+/__pycache__
+
+streamlit_output
+test.py
+test.srt
+test.txt
