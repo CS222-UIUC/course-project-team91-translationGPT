@@ -7,12 +7,14 @@ import base64
 import re
 import openai
 
+
 def create_download_link(file_path, file_name):
     with open(file_path, "rb") as f:
         bytes = f.read()
         b64 = base64.b64encode(bytes).decode()
         href = f'<a href="data:file/octet-stream;base64,{b64}" download="{file_name}">Download {file_name}</a>'
         st.markdown(href, unsafe_allow_html=True)
+
 
 st.set_page_config(
     page_title="Video Translator",
@@ -24,7 +26,8 @@ if not os.path.exists("streamlit_output"):
     os.mkdir("streamlit_output")
 
 st.title("PigeonAI Video Translator")
-st.subheader("Translate your video subtitles from English to Chinese\n 自动将视频字幕从英文翻译成中文")
+st.subheader(
+    "Translate your video subtitles from English to Chinese\n 自动将视频字幕从英文翻译成中文")
 
 inputs_count = 0
 video_name = None
@@ -41,7 +44,8 @@ if video_file:
     # video_name = video_file.name
 
 # Upload audio file
-audio_file = st.file_uploader("Upload your audio file (optional)", type=["mp3", "wav","m4a"])
+audio_file = st.file_uploader(
+    "Upload your audio file (optional)", type=["mp3", "wav", "m4a"])
 if audio_file:
     inputs_count += 1
     # video_name = audio_file.name
@@ -61,7 +65,8 @@ else:
     st.warning("Please provide an input to proceed.")
 
 if video_file is not None or video_link is not None or srt_file is not None or audio_file is not None:
-    video_name = st.text_input("Enter a name for the output video", value="No need for this if you give a link")
+    video_name = st.text_input(
+        "Enter a name for the output video", value="No need for this if you give a link")
     video_name = re.sub(r'\s+', '_', video_name)
 
     if st.button("Start Translation"):
@@ -83,7 +88,7 @@ if video_file is not None or video_link is not None or srt_file is not None or a
                     f.write(srt_file.getbuffer())
 
             # temp_result_dir = tempfile.mkdtemp()
-            
+
             # Save the paths to the input files as command line arguments
             cmd_args = [
                 "/home/appuser/venv/bin/python",
@@ -104,8 +109,7 @@ if video_file is not None or video_link is not None or srt_file is not None or a
 
             if video_name:
                 cmd_args.extend(["--video_name", f"'{video_name}'"])
-            
-            
+
             cmd_args.extend([
                 "--output_dir", "streamlit_output"
             ])
@@ -113,7 +117,8 @@ if video_file is not None or video_link is not None or srt_file is not None or a
             cmd = " ".join(cmd_args)
 
             # Run the translation script
-            result = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            result = subprocess.run(
+                cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             # st.write(result.stderr.decode("utf-8"))
             # print(result.stdout.decode("utf-8"))
             # print(result.returncode)
@@ -133,8 +138,9 @@ if video_file is not None or video_link is not None or srt_file is not None or a
                 if os.path.exists(video_file_zh):
                     create_download_link(video_file_zh, f"{video_name}_zh.mp4")
                 else:
-                    st.warning("Translated video not available. Check your input settings.")
-        
+                    st.warning(
+                        "Translated video not available. Check your input settings.")
+
                 # Clean up temporary files and directories
                 shutil.rmtree("streamlit_output")
                 if video_file:
@@ -143,6 +149,11 @@ if video_file is not None or video_link is not None or srt_file is not None or a
                     os.remove(audio_file_path)
                 if srt_file:
                     os.remove(srt_file_path)
-            else:
-                st.error("Translation failed. Please check the input settings and try again.")
 
+            elif result.returncode != 0:
+                st.error(
+                    f"Translation failed with error: {result.stderr.decode('utf-8')}")
+
+            else:
+                st.error(
+                    "Translation failed. Please check the input settings and try again.")
