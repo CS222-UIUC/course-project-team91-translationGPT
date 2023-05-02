@@ -20,26 +20,29 @@ The architecture of Project T is designed to ensure smooth and effective operati
 
 Refer to the attached architecture diagram for a visual understanding of the system. The Python programming language, along with various libraries such as pytube, openai, argparse, tqdm, SRT, stable-whisper, ffmpeg, and streamlit, was used to build these components.
 
+![alt text](doc/23371683049607_.pic.jpg "LYC")
+
 ## Installation and Usage
 
 Before installation, ensure you have Python 3.8-3.10 installed on your system. Next, clone the repository and install the required packages:
 
-```
+``` bash
 pip install -r requirement.txt
 ```
 
-example online: 
+example online:
 
-```
+``` python
 python3 pipeline.py --link "https://www.youtube.com/watch?v=9pArcK9TvoY" 
 ```
 
-example offline: 
-```
+example offline:
+
+``` python
 python3 pipeline.py --audio_file test_translation.m4a --video_name test_translation
 ```
 
-```
+``` python
 usage: pipeline.py [-h] [--link LINK] [--video_file VIDEO_FILE] [--audio_file AUDIO_FILE] [--srt_file SRT_FILE] [--download DOWNLOAD]
                    [--output_dir OUTPUT_DIR] [--video_name VIDEO_NAME] [--model_name MODEL_NAME] [-only_srt] [-v]
 
@@ -61,7 +64,6 @@ options:
   -only_srt             set script output to only .srt file
   -v                    auto encode script with video
 ```
-
 
 ## Group Members and Roles
 
