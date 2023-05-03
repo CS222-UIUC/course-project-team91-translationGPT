@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Project T is a state-of-the-art video translation tool that leverages OpenAI's GPT model to translate English videos to Chinese. This tool is a step ahead of existing software in its ability to create bilingual subtitle files in both SRT and ASS formats and embed translated subtitles directly into video files. The motivation behind this project is to simplify and automate the video translation process, thereby breaking language barriers and promoting global content accessibility.
+Project T is a fantastic video translation tool that leverages OpenAI's GPT model to translate English videos into Chinese. This tool is a step ahead of existing software's ability to create bilingual subtitle files in SRT and ASS formats, and embeds translated subtitles directly into video files. This project aims to simplify and automate the video translation process, thereby breaking language barriers and promoting global content accessibility.
 
 ## Technical Architecture
 
