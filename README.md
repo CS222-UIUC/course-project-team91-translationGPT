@@ -65,6 +65,26 @@ options:
   -v                    auto encode script with video
 ```
 
+Also, we developed a web page for the project using Streamlit. To run this, execute the following command:
+
+First, you need to start the docker container:
+
+``` bash
+docker build -t streamlit:latest .
+```
+
+Second, you need to run the docker container:
+
+``` bash
+docker run streamlit:latest
+```
+
+Then, you can run the web page:
+  
+``` bash
+streamlit run streamlit_app.py
+```
+
 ## Group Members and Roles
 
 - **Member 1**: Responsible for designing and implementing the YouTube Video Downloader and Audio Extractor module. Also contributed to project documentation.
