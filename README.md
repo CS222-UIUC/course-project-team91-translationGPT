@@ -67,4 +67,10 @@ options:
 
 ## Group Members and Roles
 
-TBD
+- **Member 1**: Responsible for designing and implementing the YouTube Video Downloader and Audio Extractor module. Also contributed to project documentation.
+
+- **Member 2**: Developed the Transcription and Translation Modules. Worked extensively with OpenAI's GPT model to ensure accurate transcriptions and translations.
+
+- **Member 3**: Implemented the Subtitle File Generator and Subtitle Embedder modules. Also handled the integration of FFmpeg into the project.
+
+- **Member 4**: Managed project coordination and scheduling. Also responsible for coding standards and quality assurance in the project.Oversaw the project's installation and usage documentation. Also contributed to the development and testing of the project.
