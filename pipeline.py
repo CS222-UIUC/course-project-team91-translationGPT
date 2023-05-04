@@ -135,7 +135,7 @@ with open("finetune_data/dict.csv",'r', encoding='utf-8') as f:
 
 def clean_timestamp(lines):
   new_lines = []
-  strinfo = re.compile('[0-9]+\n.{25},[0-9]{3}')    # 注意用4个\\\\来替换\
+  strinfo = re.compile('[0-9]+\n.{25},[0-9]{3}')   
   new_lines = strinfo.sub('_-_', lines)
   print(new_lines)
   return new_lines
@@ -230,5 +230,5 @@ if args.v:
     if args.only_srt:
         os.system(f'ffmpeg -i {video_path} -vf "subtitles={RESULT_PATH}/{VIDEO_NAME}/{VIDEO_NAME}_zh.srt" {RESULT_PATH}/{VIDEO_NAME}/{VIDEO_NAME}.mp4')
     else:
-        os.system(f'ffmpeg -i {video_path} -vf "subtitles={RESULT_PATH}/{VIDEO_NAME}/{VIDEO_NAME}_zh.ass" {RESULT_PATH}/{VIDEO_NAME}/{VIDEO_NAME}.mp4')
+        os.system(f'ffmpeg -i {video_path} -vf "subtitles={RESULT_PATH}/{VIDEO_NAME}/{VIDEO_NAME}_zh.srt" {RESULT_PATH}/{VIDEO_NAME}/{VIDEO_NAME}.mp4')
 

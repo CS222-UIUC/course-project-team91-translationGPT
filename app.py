@@ -25,15 +25,15 @@ st.set_page_config(
 if not os.path.exists("streamlit_output"):
     os.mkdir("streamlit_output")
 
-st.title("PigeonAI Video Translator")
+st.title("TranslationGPT Video Translator")
 st.subheader(
-    "Translate your video subtitles from English to Chinese\n 自动将视频字幕从英文翻译成中文")
+    "Translate your video subtitles from English to Chinese\n CS222 Team91")
 
 inputs_count = 0
 video_name = None
 
 # YouTube video link input
-video_link = st.text_input("Enter YouTube video link")
+video_link = None
 if video_link:
     inputs_count += 1
 
@@ -55,6 +55,9 @@ srt_file = st.file_uploader("Upload your SRT file (optional)", type=["srt"])
 if srt_file:
     inputs_count += 1
     # video_name = srt_file.name
+
+# encode video
+v = st.checkbox("Auto encode script with video", value=False, key="v")
 
 # Check only one of the inputs is given
 if inputs_count == 1:
@@ -91,7 +94,7 @@ if video_file is not None or video_link is not None or srt_file is not None or a
 
             # Save the paths to the input files as command line arguments
             cmd_args = [
-                "/home/appuser/venv/bin/python",
+                "/Users/myyyth/opt/anaconda3/envs/proj-t/bin/python3.10",
                 "pipeline.py",
             ]
 
@@ -109,6 +112,9 @@ if video_file is not None or video_link is not None or srt_file is not None or a
 
             if video_name:
                 cmd_args.extend(["--video_name", f"'{video_name}'"])
+            
+            if v:
+                cmd_args.extend(["-v"])
 
             cmd_args.extend([
                 "--output_dir", "streamlit_output"
@@ -118,7 +124,7 @@ if video_file is not None or video_link is not None or srt_file is not None or a
 
             # Run the translation script
             result = subprocess.run(
-                cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                cmd, shell=True)
             # st.write(result.stderr.decode("utf-8"))
             # print(result.stdout.decode("utf-8"))
             # print(result.returncode)
