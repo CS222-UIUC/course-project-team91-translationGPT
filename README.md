@@ -1,12 +1,12 @@
-# Project T: Video Translation Tool
+# Project TranslationGPT: Video Translation Tool
 
 ## Introduction
 
-Project T is a fantastic video translation tool that leverages OpenAI's GPT model to translate English videos into Chinese. This tool is a step ahead of existing software's ability to create bilingual subtitle files in SRT and ASS formats, and embeds translated subtitles directly into video files. This project aims to simplify and automate the video translation process, thereby breaking language barriers and promoting global content accessibility.
+Project TranslationGPT is a fantastic video translation tool that leverages OpenAI's GPT model to translate English videos into Chinese. This tool is a step ahead of existing software's ability to create bilingual subtitle files in SRT and ASS formats, and embeds translated subtitles directly into video files. This project aims to simplify and automate the video translation process, thereby breaking language barriers and promoting global content accessibility.
 
 ## Technical Architecture
 
-The architecture of Project T is designed to ensure smooth and effective operation. It primarily includes the following components:
+The architecture of Project TranslationGPT is designed to ensure smooth and effective operation. It primarily includes the following components:
 
 1. **YouTube Video Downloader and Audio Extractor**: This component is responsible for fetching and downloading YouTube videos and extracting their audio content. It interacts with the YouTube API using the 'pytube' library.
 
