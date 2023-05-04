@@ -1,27 +1,48 @@
-# PROJECT-T
+# Project TranslationGPT: Video Translation Tool
 
-## Installation
+## Introduction
 
-```
+Project TranslationGPT is a fantastic video translation tool that leverages OpenAI's GPT model to translate English videos into Chinese. This tool is a step ahead of existing software's ability to create bilingual subtitle files in SRT and ASS formats, and embeds translated subtitles directly into video files. This project aims to simplify and automate the video translation process, thereby breaking language barriers and promoting global content accessibility.
+
+## Technical Architecture
+
+The architecture of Project TranslationGPT is designed to ensure smooth and effective operation. It primarily includes the following components:
+
+1. **YouTube Video Downloader and Audio Extractor**: This component is responsible for fetching and downloading YouTube videos and extracting their audio content. It interacts with the YouTube API using the 'pytube' library.
+
+2. **Transcription Module**: It transcribes the extracted audio to create English SRT subtitle files. It interacts with the GPT model for transcribing the audio.
+
+3. **Translation Module**: This component translates English subtitles into Chinese using OpenAI's GPT model.
+
+4. **Subtitle File Generator**: This module generates bilingual SRT and ASS subtitle files. It uses the 'SRT' and 'stable-whisper' libraries for this purpose.
+
+5. **Subtitle Embedder**: This optional component embeds the translated subtitles into the video file. It requires FFmpeg to function.
+
+Refer to the attached architecture diagram for a visual understanding of the system. The Python programming language, along with various libraries such as pytube, openai, argparse, tqdm, SRT, stable-whisper, ffmpeg, and streamlit, was used to build these components.
+
+![alt text](doc/23371683049607_.pic.jpg "LYC")
+
+## Installation and Usage
+
+Before installation, ensure you have Python 3.8-3.10 installed on your system. Next, clone the repository and install the required packages:
+
+``` bash
 pip install -r requirement.txt
 ```
 
-## Quick Start:
+example online:
 
-example online: 
-
-```
+``` python
 python3 pipeline.py --link "https://www.youtube.com/watch?v=9pArcK9TvoY" 
 ```
 
-example offline: 
-```
+example offline:
+
+``` python
 python3 pipeline.py --audio_file test_translation.m4a --video_name test_translation
 ```
 
-
-## Usage
-```
+``` python
 usage: pipeline.py [-h] [--link LINK] [--video_file VIDEO_FILE] [--audio_file AUDIO_FILE] [--srt_file SRT_FILE] [--download DOWNLOAD]
                    [--output_dir OUTPUT_DIR] [--video_name VIDEO_NAME] [--model_name MODEL_NAME] [-only_srt] [-v]
 
@@ -44,6 +65,32 @@ options:
   -v                    auto encode script with video
 ```
 
-## Notice
-if you cannot download youtube video, please follow the link below.
-https://github.com/pytube/pytube/issues/1498
+Also, we developed a web page for the project using Streamlit. To run this, execute the following command:
+
+First, you need to start the docker container:
+
+``` bash
+docker build -t streamlit:latest .
+```
+
+Second, you need to run the docker container:
+
+``` bash
+docker run streamlit:latest
+```
+
+Then, you can run the web page:
+  
+``` bash
+streamlit run streamlit_app.py
+```
+
+## Group Members and Roles
+
+- **Eason:** Project lead. Design the whole pipeline and architecture. Implement pipeline. Contributed to project documentation.
+
+- **Mingjun:** Srt subtitle preprocess. Managed project coordination and scheduling. Also responsible for coding standards and quality assurance in the project.
+
+- **David:** Prompt engineer on GPT4. Worked extensively with OpenAI's GPT model to ensure accurate transcriptions and translations.
+
+- **Danny:** Web demo development and deploy (Streamlit). Oversaw the project's installation and usage documentation. Also contributed to the development and testing of the project.
