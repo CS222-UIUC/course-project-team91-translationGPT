@@ -87,10 +87,10 @@ streamlit run streamlit_app.py
 
 ## Group Members and Roles
 
-- **Member 1**: Responsible for designing and implementing the YouTube Video Downloader and Audio Extractor module. Also contributed to project documentation.
+- **Eason:** Project lead. Design the whole pipeline and architecture. Implement pipeline. Contributed to project documentation.
 
-- **Member 2**: Developed the Transcription and Translation Modules. Worked extensively with OpenAI's GPT model to ensure accurate transcriptions and translations.
+- **Mingjun:** Srt subtitle preprocess. Managed project coordination and scheduling. Also responsible for coding standards and quality assurance in the project.
 
-- **Member 3**: Implemented the Subtitle File Generator and Subtitle Embedder modules. Also handled the integration of FFmpeg into the project.
+- **David:** Prompt engineer on GPT4. Worked extensively with OpenAI's GPT model to ensure accurate transcriptions and translations.
 
-- **Member 4**: Managed project coordination and scheduling. Also responsible for coding standards and quality assurance in the project.Oversaw the project's installation and usage documentation. Also contributed to the development and testing of the project.
+- **Danny:** Web demo development and deploy (Streamlit). Oversaw the project's installation and usage documentation. Also contributed to the development and testing of the project.
